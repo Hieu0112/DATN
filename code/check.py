@@ -3,6 +3,8 @@ from underthesea import word_tokenize
 import re
 import pandas as pd
 import streamlit as st
+import warnings
+warnings.filterwarnings("ignore")
 
 
 

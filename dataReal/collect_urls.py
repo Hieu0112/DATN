@@ -29,7 +29,7 @@ link_data = []
 
 # Đọc dữ liệu đã có trong file CSV (nếu có)
 existing_data = set()
-csv_file = 'dataChung/Urls1.csv'
+csv_file = 'dataReal/Urls1.csv'
 
 try:
     with open(csv_file, mode='r', newline='', encoding='utf-8') as file:

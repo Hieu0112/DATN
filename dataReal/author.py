@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import os
 
 # Đọc dữ liệu từ tệp Links.csv
-links_df = pd.read_csv('dataChung/testAu.csv')
+links_df = pd.read_csv('dataReal/testAu.csv')
 
 def get_authors_from_url(url):
     try:
@@ -54,7 +54,7 @@ for index, row in links_df.iterrows():
 results_df = pd.DataFrame(results)
 
 # Tên tệp CSV đầu ra
-output_csv_file = 'dataChung/Authors_Output.csv'
+output_csv_file = 'dataReal/Authors_Output.csv'
 
 # Kiểm tra xem tệp CSV đã tồn tại chưa
 if not os.path.isfile(output_csv_file):

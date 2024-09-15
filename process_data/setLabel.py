@@ -1,7 +1,7 @@
 import csv
 import os
-csv_file="data/data_real.csv"
-csv_file_data="data/data_train_update.csv"
+csv_file="data_Json/dataset_fake.csv"
+csv_file_data="process_data/data_train.csv"
 
 def reset_processed_field(csv_file,csv_file_data):
     # Đọc dữ liệu từ tệp CSV

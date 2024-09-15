@@ -1,5 +1,5 @@
 import csv
-input_csv_file = 'dataChung/Urls.csv'
+input_csv_file = 'dataReal/Urls.csv'
 
 def reset_processed_field(csv_file):
     # Đọc dữ liệu từ tệp CSV

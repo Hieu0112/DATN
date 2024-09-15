@@ -7,8 +7,8 @@ import requests
 from urllib.parse import urlparse
 
 # Đường dẫn tới tệp CSV chứa URL
-urls_file = 'dataChung/Urls.csv'
-real_file = 'dataChung/dataset_real.csv'
+urls_file = 'dataReal/Urls.csv'
+real_file = 'dataReal/dataset_real.csv'
 
 def clean_text(text):
     # Thay thế các ký tự xuống dòng và nhiều dấu cách bằng một dấu cách
