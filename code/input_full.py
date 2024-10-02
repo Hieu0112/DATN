@@ -43,6 +43,8 @@ def predict(title, text, author, domain, model_type):
 def manual_testing(title, text, author, domain, _model, _vectorizer):
     # Combine fields like in training
     combined_input = f"{title} _ {text} _ {author} _ {domain}"
+
+    # combined_input= domain + ' |sd| ' + author + ' |auth| ' + title + ' |title| ' + text + ' |text|'
     
     # Preprocess the combined input
     testing_data = {"combined": [combined_input]}

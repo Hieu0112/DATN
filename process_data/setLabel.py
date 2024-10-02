@@ -19,9 +19,6 @@ def reset_processed_field(csv_file,csv_file_data):
         if 'fake' in csv_file:
             label = '1'
 
-        if source_domain == 'nhandan.vn':
-            author = "nhandan"
-
         article_data = {
             'title': title,
             'text': text.replace('\n', '.'),

@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
+# Test lấy tên tác giả của bài báo
 # Đọc dữ liệu từ tệp Links.csv
 links_df = pd.read_csv('dataReal/testAu.csv')
 

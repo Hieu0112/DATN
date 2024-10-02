@@ -7,13 +7,13 @@ import requests
 from urllib.parse import urlparse
 
 # Đường dẫn tới tệp CSV chứa URL
-urls_file = 'dataReal/Urls.csv'
-real_file = 'dataReal/dataset_real.csv'
+urls_file = 'dataReal/Urls1.csv'
+real_file = 'dataReal/dataset_real1.csv'
 
 def clean_text(text):
     # Thay thế các ký tự xuống dòng và nhiều dấu cách bằng một dấu cách
     text = re.sub(r'\s+', ' ', text)
-    return text.strip()
+    return text.strip()+" "
 
 def process_url(url):
     try:
@@ -105,7 +105,7 @@ def process_url(url):
 
             return{
                 'title': h1_text,
-                'text': p_content.replace('\n', '.'),
+                'text': p_content.replace('\n', ' '),
                 # 'date': date,
                 'author': author_content,
                 'source_domain': domain
@@ -133,13 +133,12 @@ with open(urls_file, mode='r', newline='', encoding='utf-8') as file:
                         writer.writeheader()
                 
                     # Ghi dữ liệu bài báo
-                    if article_data and article_data['text'].strip():  # Kiểm tra nếu 'text' không rỗng
+                    if article_data['text'].strip():  # Kiểm tra nếu 'text' không rỗng
                         # Ghi dữ liệu bài báo
                         writer.writerow(article_data)
-            
-                # Sau khi xử lý xong, đánh dấu 'Processed' là 1
-                row['Processed'] = '1'
-                time.sleep(0.3)
+                        # Sau khi xử lý xong, đánh dấu 'Processed' là 1
+                        row['Processed'] = '1'
+                time.sleep(0.5)
         data.append(row)  # Lưu lại dữ liệu
 
 

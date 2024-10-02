@@ -4,13 +4,13 @@ import re
 import csv
 
 # Đọc file Excel không có tiêu đề cột và chỉ lấy 3 cột đầu tiên
-df = pd.read_excel('dataFake/viettan_org_fake.xlsx', header=None, usecols=[0, 1, 2])
+df = pd.read_excel('bbc_com.xlsx', header=None, usecols=[0, 1, 2])
 
 # Đặt tên cho các cột tương ứng với Title, Text, Author
 df.columns = ['title', 'text', 'author']
 
 # Tên file CSV bạn muốn tạo
-csv_file = 'dataFake/dataset_fake.csv'
+csv_file = 'dataset_fake.csv'
 
 # Kiểm tra nếu file CSV chưa tồn tại, tạo file và thêm tiêu đề
 if not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0:
@@ -22,7 +22,7 @@ for index, row in df.iterrows():
     title = row['title']
     text = row['text']
     author = row['author']
-    source_domain= 'viettan.org'
+    source_domain= 'bbc.com'
 
     # Xử lý Text: Xóa \n và thay các chuỗi khoảng trắng thừa bằng dấu chấm.
     text = text.replace('\n', ' ')  # Thay thế \n bằng khoảng trắng
