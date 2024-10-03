@@ -4,7 +4,7 @@ import re
 import csv
 
 # Đọc file Excel không có tiêu đề cột và chỉ lấy 3 cột đầu tiên
-df = pd.read_excel('bbc_com.xlsx', header=None, usecols=[0, 1, 2])
+df = pd.read_excel('file_xlsx/bbc_com.xlsx', header=None, usecols=[0, 1, 2])
 
 # Đặt tên cho các cột tương ứng với Title, Text, Author
 df.columns = ['title', 'text', 'author']
