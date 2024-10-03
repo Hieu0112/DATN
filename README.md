@@ -1,4 +1,4 @@
-Đồ án tốt nghiệp
-Demo 
-fake news
-Trịnh Viết Hiếu
+- Đồ án tốt nghiệp
+- Demo 
+- fake news
+- Người thực hiện: Trịnh Viết Hiếu
