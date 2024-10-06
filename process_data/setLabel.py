@@ -1,10 +1,15 @@
 import csv
 import re
-csv_file="data_Json/dataset_real.csv"
-csv_file="data_Json/dataset_fake.csv"
+# csv_file="data_Json/dataset_real.csv"
+# csv_file="data_Json/dataset_fake.csv"
 
-csv_file="dataFake/dataset_fake.csv"
-csv_file="dataReal/dataset_real.csv"
+# csv_file="dataReal/dataset_real.csv"
+
+csv_file="dataFake/Detail_bbc_fake.csv"
+csv_file="dataFake/Detail_thoi_bao_fake.csv"
+csv_file="dataFake/Detail_nhatkyyeunuoc_blogspot_com_fake.csv"
+csv_file="dataFake/Detail_viettan_fake.csv"
+
 csv_file_data="process_data/data_train.csv"
 
 def Update_label(csv_file,csv_file_data):
