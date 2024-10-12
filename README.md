@@ -1,4 +1,7 @@
 - Đồ án tốt nghiệp: Nghiên cứu phát hiện tin giả độc hại
+- Lý thuyết:
+    + Tìm hiểu tin giả(đã xong)
+    + Tìm hiểu học máy, học sâu(đã xong)
 - Demo:
     + Code lấy tin tức từ trang trang web uy tín: tin thật(đã xong)
     + Code lấy tin tức từ các trang mạng độc hại: đang thực thi được 4 trang web và tìm thêm(đang triển khai)
