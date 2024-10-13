@@ -3,17 +3,17 @@ import re
 import os
 
 # Thư mục chứa các file CSV
-directory = "dataFake/"
-# directory = "dataReal/"  
+# directory = "Data_Collect/dataFake/"
+directory = "Data_Collect/dataReal/"  
 
-csv_file_data = "data_Vietnamese/Fake.csv"
+csv_file_data = "Train_data/Vietnamese.csv"
 
 def Update_label(csv_file, csv_file_data):
     # Đọc dữ liệu từ tệp CSV
     with open(csv_file, 'r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         rows = list(reader)  # Đọc tất cả các hàng vào danh sách
-
+ 
     for row in rows:
         title = row['title']
         text = row['text']
@@ -25,7 +25,7 @@ def Update_label(csv_file, csv_file_data):
         text = re.sub(r"[ '“,”\"]+", ' ', text).strip()  # Thay thế dấu ' “,”
         # Nếu file là file chứa tin thật, gán nhãn là 0
         # Nếu file là file chứa tin giả, gán nhãn là 1
-        if 'fake' in csv_file:
+        if 'fake' in csv_file.lower():
             label = '1'
 
         # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
@@ -35,6 +35,7 @@ def Update_label(csv_file, csv_file_data):
                 'text': text.replace('\n', ' '),
                 'label': label
             }
+    
     
             # Ghi dữ liệu vào file CSV
             with open(csv_file_data, mode='a', newline='', encoding='utf-8') as file:
