@@ -74,7 +74,7 @@ for item in urls:
 
     # Đọc dữ liệu đã có trong file CSV (nếu có)
     existing_data = set()
-    csv_file = 'dataReal/Urls.csv'
+    csv_file = 'Data_Collect/dataReal/Urls.csv'
 
     try:
         with open(csv_file, mode='r', newline='', encoding='utf-8') as file:
