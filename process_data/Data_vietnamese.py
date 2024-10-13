@@ -3,8 +3,8 @@ import re
 import os
 
 # Thư mục chứa các file CSV
-# directory = "Data_Collect/dataFake/"
-directory = "Data_Collect/dataReal/"  
+directory = "Data_Collect/dataFake/"
+# directory = "Data_Collect/dataReal/"  
 
 csv_file_data = "Train_data/Vietnamese.csv"
 

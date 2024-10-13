@@ -3,7 +3,7 @@ import re
 import os
 so_luong = 1
 # Thư mục chứa các file CSV
-csv_file = "Data_Collect/data_English/True.csv"
+csv_file = "Data_Collect/data_English/Fake.csv"
 # csv_file = "Data_Collect/data_English/Real.csv" 
 
 csv_file_data = "Train_data/English.csv"
