@@ -6,7 +6,7 @@ import os
 directory = "Data_Collect/dataFake/"
 # directory = "Data_Collect/dataReal/"  
 
-csv_file_data = "Train_data/Vietnamese.csv"
+csv_file_data = "Train_data/Vietnamese_update.csv"
 
 def Update_label(csv_file, csv_file_data):
     # Đọc dữ liệu từ tệp CSV
@@ -49,6 +49,6 @@ if __name__ == '__main__':
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):  # Chỉ xử lý các file CSV
             csv_file = os.path.join(directory, filename)
-            if 'url' not in csv_file.lower():
+            if 'url' not in csv_file.lower() and csv_file !="Data_Collect/dataReal/dataset_real.csv":
                 Update_label(csv_file, csv_file_data)
                 print(f"đã xử lý file: {csv_file}")
