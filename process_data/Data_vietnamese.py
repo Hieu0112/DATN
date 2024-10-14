@@ -29,7 +29,7 @@ def Update_label(csv_file, csv_file_data):
             label = '1'
 
         # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
-        if len(text) > 2 * len(title) and len(text) >= 100 :
+        if len(text) > 2 * len(title) and len(text) >= 100 and len(title) > 0:
             article_data = {
                 'title': title.replace('\n', ' '),
                 'text': text.replace('\n', ' '),

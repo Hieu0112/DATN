@@ -12,8 +12,8 @@
 # 3, Thu thập dữ liệu
 - Code lấy tin tức từ trang trang web uy tín: tin thật(đã xong)
 - Code lấy tin tức từ các trang mạng độc hại: đang thực thi được 4 trang web và tìm thêm(đã xong)
-- Data Việt Nam: hơn 10815 tin
-    + True: 8037 tin
+- Data Việt Nam: hơn 10803 tin
+    + True: 8025 tin
     + Fake: 2778 tin
 - Data English: 39000 tin 
     + True: 19500 tin
