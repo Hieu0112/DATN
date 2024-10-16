@@ -15,8 +15,10 @@ chrome_options.add_argument("--ignore-certificate-errors")  # Bỏ qua lỗi SSL
 # Khởi tạo trình điều khiển (ChromeDriver)
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-set_up_web="https://thoibao.de/blog/category/chinh-tri"
+# set_up_web="https://thoibao.de/blog/category/chinh-tri"
 # set_up_web="https://viettan.org/tai-sao-csvn-e-ngai-viet-tan/"
+# set_up_web="https://www.bbc.com/vietnamese/articles/c9vpj1gkmvko"
+set_up_web="https://www.khoi8406.com/post/nhanquyenchovn/ly-do-exonmobil-co-roi-khoi-viet-nam-447723fc0d7.html"
 
 # Mở một trang chứa reCAPTCHA để người dùng tự giải
 driver.get(set_up_web)
@@ -77,6 +79,27 @@ def process_url(url):
                 # Kiểm tra nếu thẻ <span> chứa tác giả tồn tại
                 if author_span:
                     author = author_span.get_text().strip().replace('\n', ' ').replace('\t', ' ')
+        elif "khoi8406.com" in domain:
+            title = soup.find('h1')
+            title_text = title.text.strip().replace('\n', ' ').replace('\t', ' ') if title else "N/A"
+            
+            b_tags = soup.find_all('b')
+
+            for b_tag in b_tags:
+                if not b_tag.find('a'):  # Kiểm tra nếu không có thẻ <a> bên trong
+                    author= b_tag.get_text(strip=True).replace('\n', ' ').replace('\t', ' ')
+                    break
+            p_tags = soup.find_all('br')
+            for ct in p_tags:
+            # Sử dụng .next_sibling để truy cập nội dung sau thẻ <br>
+                next_sibling = ct.next_sibling
+
+                # Kiểm tra xem next_sibling có phải là một chuỗi văn bản không trống
+                if next_sibling and isinstance(next_sibling, str) and next_sibling.strip():
+                    all_content.append(clean_text(next_sibling.strip()))
+            # Join content into a single string
+            full_content = " ".join(all_content)
+            text_content = clean_text(full_content)
         else:
             # Lấy tiêu đề (thẻ h1)
             title = soup.find('h1', class_='elementor-heading-title elementor-size-default')

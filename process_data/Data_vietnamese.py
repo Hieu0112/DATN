@@ -3,8 +3,8 @@ import re
 import os
 
 # Thư mục chứa các file CSV
-directory = "Data_Collect/dataFake/"
-# directory = "Data_Collect/dataReal/"  
+# directory = "Data_Collect/dataFake/"
+directory = "Data_Collect/dataReal/"  
 
 csv_file_data = "Train_data/Vietnamese_update.csv"
 
@@ -29,7 +29,7 @@ def Update_label(csv_file, csv_file_data):
             label = '1'
 
         # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
-        if len(text) > 2 * len(title) and len(text) >= 100 and len(title) > 0:
+        if len(text) > 2 * len(title) and len(text) >= 300 and len(title) > 0:
             article_data = {
                 'title': title.replace('\n', ' '),
                 'text': text.replace('\n', ' '),
@@ -49,6 +49,7 @@ if __name__ == '__main__':
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):  # Chỉ xử lý các file CSV
             csv_file = os.path.join(directory, filename)
+            # if 'url' not in csv_file.lower():
             if 'url' not in csv_file.lower() and csv_file !="Data_Collect/dataReal/dataset_real.csv":
                 Update_label(csv_file, csv_file_data)
                 print(f"đã xử lý file: {csv_file}")

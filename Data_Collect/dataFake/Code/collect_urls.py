@@ -31,7 +31,15 @@ urls_page = [
     # {"url": "https://thoibao.de/blog/category/xa-hoi/page/{page}", "name_class_page": "entry-title","data-item":"h2"},
     # {"url": "https://thoibao.de/blog/category/phap-luat-doi-song/page/{page}", "name_class_page": "entry-title","data-item":"h2"},
 
-    {"url": "https://www.bbc.com/vietnamese/topics/ckdxnx1x5rnt?page={page}", "name_class_page": "bbc-110w6ng e47bds20","data-item":"h2"},
+    # {"url": "https://www.bbc.com/vietnamese/topics/ckdxnx1x5rnt?page={page}", "name_class_page": "bbc-110w6ng e47bds20","data-item":"h2"},
+    
+    {"url": "https://www.khoi8406.com/?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/danlambaovn?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/quanlambao?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/nhanquyenchovn?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/chutichquochoi?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/leanhhung?page={page}", "name_class_page": "post-snippet","data-item":"div"},
+    {"url": "https://www.khoi8406.com/channel/chandungquyenluc?page={page}", "name_class_page": "post-snippet","data-item":"div"},
 
 ]
 urls=[]
@@ -50,7 +58,8 @@ print(len(urls))
 
 # set_up_web="https://viettan.org/"
 # set_up_web="https://thoibao.de/blog/category/chinh-tri"
-set_up_web="https://www.bbc.com/vietnamese/topics/ckdxnx1x5rnt?page=1"
+# set_up_web="https://www.bbc.com/vietnamese/topics/ckdxnx1x5rnt?page=1"
+set_up_web="https://www.khoi8406.com/?page=1"
 
 
 # Cấu hình ChromeOptions
