@@ -9,12 +9,12 @@
 - Tìm hiểu học máy, học sâu(đã xong)
 - Báo cáo đã xong mục lý thuyết, khái quát
 
-# 3, Thu thập dữ liệu
+# 3, Thu thập dữ liệu --- Done
 - Code lấy tin tức từ trang trang web uy tín: tin thật(đã xong)
-- Code lấy tin tức từ các trang mạng độc hại: đang thực thi được 4 trang web và tìm thêm(đã xong)
-- Data Việt Nam: hơn 10803 tin
-    + True: 8025 tin
-    + Fake: 2778 tin
+- Code lấy tin tức từ các trang mạng độc hại: đang thực thi được 5 trang web và tìm thêm(đã xong)
+- Data Việt Nam: hơn 14000 tin
+    + True: hơn 8000 tin
+    + Fake: hơn 6000 tin
 - Data English: 39000 tin 
     + True: 19500 tin
     + Fake: 19500 tin
