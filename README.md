@@ -2,7 +2,7 @@
 - Đồ án tốt nghiệp: Nghiên cứu phát hiện tin giả độc hại
 - Người thực hiện: Trịnh Viết Hiếu
 - Mã sinh Viên: B20DCAT063
-- Lớp D20CQAT03-B
+- Lớp: D20CQAT03-B
 
 # 2, Lý thuyết
 - Tìm hiểu tin giả(đã xong)
@@ -10,14 +10,22 @@
 - Báo cáo đã xong mục lý thuyết, khái quát
 
 # 3, Thu thập dữ liệu --- Done
-- Code lấy tin tức từ trang trang web uy tín: tin thật(đã xong)
-- Code lấy tin tức từ các trang mạng độc hại: đang thực thi được 5 trang web và tìm thêm(đã xong)
-- Data Việt Nam: hơn 14000 tin
-    + True: hơn 8000 tin
-    + Fake: hơn 6000 tin
-- Data English: 39000 tin 
-    + True: 19500 tin
-    + Fake: 19500 tin
+- Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
+- Code lấy tin tức từ các trang mạng độc hại: 5 trang web độc hại + 1 link git
+- Data Train:
+    + Data Việt Nam: 12600 tin
+        * True: 6600 tin
+        * Fake: 6000 tin
+    - Data English: 39000 tin 
+        * True: 19500 tin
+        * Fake: 19500 tin
+- Data Test:
+    + Data Việt Nam: 1367 tin
+        * True: 1277 tin
+        * Fake: 90 tin
+    - Data English: 200 tin 
+        * True: 100 tin
+        * Fake: 100 tin
 
 # 4, Xây dựng mô hình
 - Code thuật toán:
