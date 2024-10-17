@@ -1,12 +1,19 @@
 import pandas as pd
 
 # Đọc file CSV
-df = pd.read_csv('Data_Collect/dataReal/dataset_real.csv')
+type_file="Fake"
 
-# Nhóm theo 'source_domain' và lấy tối đa 300 dòng cho mỗi domain
-df_sampled = df.groupby('source_domain').apply(lambda x: x.sample(n=min(len(x), 1290))).reset_index(drop=True)
+df = pd.read_csv(f'Data_Collect/data{type_file}/{type_file}.csv')
 
-# Lưu kết quả vào file mới
-df_sampled.to_csv('Data_Collect/dataReal/random_data.csv', index=False)
+# Lấy ngẫu nhiên 300 dòng không phân biệt domain
+df_sampled = df.sample(n=6000).reset_index(drop=True)
+
+# Lưu kết quả mẫu vào file mới
+df_sampled.to_csv(f'Train_data/Vietnamese/Train_{type_file}.csv', index=False)
+
+df_remaining = df.drop(df_sampled.index)
+
+# Lưu những data còn lại vào file Test_True.csv
+df_remaining.to_csv(f'Train_data/Vietnamese/Test_{type_file}.csv', index=False)
 
 print("Hoàn tất!")
