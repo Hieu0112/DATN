@@ -1,0 +1,3 @@
+Model,Accuracy (%),Difference in Predictions (%)
+Decision Tree,98.5,1.5
+Naive Bayes,98.0,2.0

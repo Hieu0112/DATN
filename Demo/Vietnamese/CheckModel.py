@@ -72,7 +72,7 @@ NB_file = os.path.abspath("Model/Vietnamese/NB_model.joblib")
 NB_model = joblib.load(NB_file)
 
 # Load the test data from test.csv
-test_data_path = os.path.abspath("Data_Test/Vietnamese.csv")
+test_data_path = os.path.abspath("Data_Test/Test_Vietnamese.csv")
 test_data = pd.read_csv(test_data_path)
 
 DetailsPre = os.path.abspath("Predict/Vietnamese/DetailsPre.csv")
@@ -147,15 +147,14 @@ print(f"Difference in predictions for Naive Bayes: {difference_nb:.2f}%")
 
 print(f"Predictions saved to {DetailsPre}")
 
-# Tạo DataFrame chứa kết quả dự đoán
-predictions_df = pd.DataFrame({
-    'True Label': y_true,
-    'Decision Tree Prediction': y_pred_dt,
-    'Naive Bayes Prediction': y_pred_nb
+# Create a DataFrame to store the accuracy and prediction differences
+accuracy_results_df = pd.DataFrame({
+    'Model': ['Decision Tree', 'Naive Bayes'],
+    'Accuracy (%)': [accuracy_dt * 100, accuracy_nb * 100],
+    'Difference in Predictions (%)': [difference_dt, difference_nb]
 })
 
+# Save the accuracy results to a CSV file
+accuracy_results_df.to_csv(Predict, index=False)
 
-# Lưu kết quả dự đoán vào file CSV
-predictions_df.to_csv(Predict, index=False)
-
-print(f"Predictions saved to {Predict}")
+print(f"Accuracy results saved to {Predict}")
