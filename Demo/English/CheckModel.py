@@ -5,6 +5,7 @@ import pandas as pd
 import warnings
 import os
 from sklearn.metrics import accuracy_score
+import time
 
 from nltk.corpus import stopwords
 
@@ -55,27 +56,49 @@ def wordopt(text):
     
     return update_text.strip()
 
+def LoadLocation(_Vector):
+    vectorizer_file=''
+    DT_file=''
+    NB_file=''
+    DetailsPre=''
+    Predict=''
+    if _Vector=='CV': 
+        vectorizer_file = os.path.abspath("Model/English/CV/English_vectorizer_CV.joblib")
+        DT_file = os.path.abspath("Model/English/CV/English_DTC_model_CV.joblib")
+        NB_file = os.path.abspath("Model/English/CV/English_NB_model_CV.joblib")
+        RFC_file = os.path.abspath("Model/English/CV/English_RFC_model_CV.joblib")
 
+        DetailsPre = os.path.abspath("Predict/English/DetailsPre_CV.csv")
+        Predict = os.path.abspath("Predict/English/Predict_CV.csv")
+    elif _Vector=='TF':
+        vectorizer_file = os.path.abspath("Model/English/TF/English_vectorizer_TF.joblib")
+        DT_file = os.path.abspath("Model/English/TF/English_DTC_model_TF.joblib")
+        NB_file = os.path.abspath("Model/English/TF/English_NB_model_TF.joblib")
+        RFC_file = os.path.abspath("Model/English/TF/English_RFC_model_TF.joblib")
 
-vectorizer_file = os.path.abspath("Model/English/EngLish_vectorizer.joblib")
-vectorizer = joblib.load(vectorizer_file)
+        DetailsPre = os.path.abspath("Predict/English/DetailsPre_TF.csv")
+        Predict = os.path.abspath("Predict/English/Predict_TF.csv")
+    
+    print("Load location: ")
+    print(vectorizer_file)
+    print(DT_file)
+    print(NB_file)
+    print(RFC_file)
+    print(DetailsPre)
+    print(Predict)
 
-DT_file = os.path.abspath("Model/English/English_DTC_model.joblib")
-DTC_model = joblib.load(DT_file)
+    vectorizer = joblib.load(vectorizer_file)
+    DTC_model = joblib.load(DT_file)
+    NB_model = joblib.load(NB_file)
+    RFC_model = joblib.load(RFC_file)
 
-NB_file = os.path.abspath("Model/English/English_NB_model.joblib")
-NB_model = joblib.load(NB_file)
+    return vectorizer,DTC_model,NB_model,RFC_model,DetailsPre,Predict
 
-# Load the test data from test.csv
 test_data_path = os.path.abspath("Data_Test/Test_English.csv")
 test_data = pd.read_csv(test_data_path)
 
-DetailsPre = os.path.abspath("Predict/English/DetailsPre.csv")
-Predict = os.path.abspath("Predict/English/Predict.csv")
-
-
 # Prediction function
-def predict(news, model):
+def predict(news, model,vectorizer):
     return manual_testing(news, model, vectorizer)
 
 def manual_testing(news, _model, _vectorizer):
@@ -91,66 +114,77 @@ def manual_testing(news, _model, _vectorizer):
 
 # Prepare for results collection
 y_true = test_data['label']  # True labels for comparison
-y_pred_dt = []  # Decision Tree predictions
-y_pred_nb = []  # Naive Bayes predictions
 
-results = []
+def Predict_Process(Type_Vector):
+
+    vectorizer,DTC_model,NB_model,RFC_model,DetailsPre,Predict = LoadLocation(Type_Vector)
+
+    y_pred_dt = []  # Decision Tree predictions
+    y_pred_nb = []  # Naive Bayes predictions
+    y_pred_rfc = []
+    results = []
+
+    for _, row in test_data.iterrows():
+        # Combine 'title' and 'text' for the test input and preprocess the text
+        news = ' |title| '+ row["title"] +' |text| '+  row["text"] 
+
+        pred_dt = predict(news,DTC_model,vectorizer)
+        y_pred_dt.append(pred_dt)
+
+        # Predict using Naive Bayes
+        pred_nb = predict(news,NB_model,vectorizer)
+        y_pred_nb.append(pred_nb)
+
+        pred_rfc = predict(news,RFC_model,vectorizer)
+        y_pred_rfc.append(pred_rfc)
+
+        # Collect the result
+        results.append({
+            'Title': row['title'],
+            'True Label': row['label'],
+            'DT Prediction': pred_dt,
+            'NB Prediction': pred_nb,
+            'RFC Prediction': pred_rfc,
+        })
+    
+
+    # Convert results to DataFrame and save
+    results_df = pd.DataFrame(results)
+
+    results_df.to_csv(DetailsPre, index=False)
+
+    # Calculate accuracy for both models
+    accuracy_dt = accuracy_score(y_true, y_pred_dt)
+    accuracy_nb = accuracy_score(y_true, y_pred_nb)
+    accuracy_rfc = accuracy_score(y_true, y_pred_rfc)
 
 
+    # Calculate the difference in predictions for each model
+    difference_dt = (y_true != y_pred_dt).mean() * 100
+    difference_nb = (y_true != y_pred_nb).mean() * 100
+    difference_rfc = (y_true != y_pred_rfc).mean() * 100
 
-for _, row in test_data.iterrows():
-    # Combine 'title' and 'text' for the test input and preprocess the text
-    news = ' |title| '+ row["title"] +' |text| '+  row["text"] 
-
-    pred_dt = predict(news,DTC_model)
-    y_pred_dt.append(pred_dt)
-
-    # Predict using Naive Bayes
-    pred_nb = predict(news,NB_model)
-    y_pred_nb.append(pred_nb)
-
-    # Collect the result
-    results.append({
-        'Title': row['title'],
-        'True Label': row['label'],
-        'Decision Tree Prediction': pred_dt,
-        'Naive Bayes Prediction': pred_nb
+    # Create a DataFrame to store the accuracy and prediction differences
+    accuracy_results_df = pd.DataFrame({
+    'Model': ['DT', 'NB','RFC'],
+    'Accuracy (%)': [accuracy_dt * 100, accuracy_nb * 100, accuracy_rfc*100],
+    'Difference in Predictions (%)': [difference_dt, difference_nb, difference_rfc]
     })
 
+    # Save the accuracy results to a CSV file
+    accuracy_results_df.to_csv(Predict, index=False)
 
 
-# Convert results to DataFrame and save
-results_df = pd.DataFrame(results)
+if __name__ == "__main__":
+    print('Bắt đầu xử lý CountVectorizer')
+    Predict_Process('CV')
+    print('Đã xử lý xong CountVectorizer')
 
-results_df.to_csv(DetailsPre, index=False)
+    time.sleep(5)
+    print()
+    print('--------------------------------------')
+    print()
 
-# Calculate accuracy for both models
-accuracy_dt = accuracy_score(y_true, y_pred_dt)
-accuracy_nb = accuracy_score(y_true, y_pred_nb)
-
-print(f"Accuracy of Decision Tree: {accuracy_dt * 100:.2f}%")
-print(f"Accuracy of Naive Bayes: {accuracy_nb * 100:.2f}%")
-
-
-
-# Calculate the difference in predictions for each model
-difference_dt = (y_true != y_pred_dt).mean() * 100
-difference_nb = (y_true != y_pred_nb).mean() * 100
-
-print(f"Difference in predictions for Decision Tree: {difference_dt:.2f}%")
-print(f"Difference in predictions for Naive Bayes: {difference_nb:.2f}%")
-
-print(f"Predictions saved to {DetailsPre}")
-
-
-# Create a DataFrame to store the accuracy and prediction differences
-accuracy_results_df = pd.DataFrame({
-    'Model': ['Decision Tree', 'Naive Bayes'],
-    'Accuracy (%)': [accuracy_dt * 100, accuracy_nb * 100],
-    'Difference in Predictions (%)': [difference_dt, difference_nb]
-})
-
-# Save the accuracy results to a CSV file
-accuracy_results_df.to_csv(Predict, index=False)
-
-print(f"Accuracy results saved to {Predict}")
+    print('Bắt đầu xử lý CountVectorizer')
+    Predict_Process('TF')
+    print('Đã xử lý xong TfidfVectorizer')
