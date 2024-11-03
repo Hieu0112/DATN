@@ -1,4 +1,4 @@
 Model,Accuracy (%),Difference in Predictions (%)
 DT,95.5,4.5
 NB,97.0,3.0
-RFC,100.0,0.0
+RFC,99.0,1.0
