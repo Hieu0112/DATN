@@ -9,7 +9,7 @@
 - Tìm hiểu học máy, học sâu(đã xong)
 - Báo cáo đã xong mục lý thuyết, khái quát
 
-# 3, Thu thập dữ liệu --- Done
+# 3, Thu thập dữ liệu
 - Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
 - Code lấy tin tức từ các trang mạng độc hại: 5 trang web độc hại + 1 link git
 - Data Train:
@@ -28,10 +28,17 @@
         * Fake: 100 tin
 
 # 4, Xây dựng mô hình
+- Vector hóa:
+    + CountVectorizer
+    + TfidfVectorizer
+    + Word2Vec
 - Code thuật toán:
     + Decision Tree: đã code, đang tối ưu
     + Navie bayes: đã code, đang tối ưu
-    + Random Forest: đang tìm hiểu
+    + Random Forest: đã code, đang tối ưu
+    + Random Forest: đã code, đang tối ưu
+    + Support Vector Machines(SVM): đã code, đang tối ưu
     + CNN: đang tìm hiểu
-- Tạo app để demo: đang tối ưu
+- Tạo app demo nhiều dữ liệu cùng lúc: đã code, đang tối ưu
+- Tạo app để demo: đã code, đang tối ưu
 
