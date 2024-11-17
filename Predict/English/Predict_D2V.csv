@@ -1,0 +1,5 @@
+Model,Accuracy (%),Difference in Predictions (%)
+DT,89.0,11.0
+NB,94.0,6.0
+RFC,99.0,1.0
+SVM,98.5,1.5

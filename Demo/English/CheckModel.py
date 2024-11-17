@@ -95,12 +95,22 @@ def LoadLocation(_Vector):
     elif _Vector == 'W2V':
         vectorizer_file = os.path.abspath("Model/English/W2V/English_vectorizer_W2V.joblib")
         DT_file = os.path.abspath("Model/English/W2V/English_DTC_model_W2V.joblib")
-        # NB_file = os.path.abspath("Model/English/W2V/English_NB_model_W2V.joblib")
+        NB_file = os.path.abspath("Model/English/W2V/English_NB_model_W2V.joblib")
         RFC_file = os.path.abspath("Model/English/W2V/English_RFC_model_W2V.joblib")
         SVM_file = os.path.abspath("Model/English/W2V/English_SVM_model_W2V.joblib")
 
         DetailsPre = os.path.abspath("Predict/English/DetailsPre_W2V.csv")
         Predict = os.path.abspath("Predict/English/Predict_W2V.csv")
+
+    elif _Vector == 'D2V':
+        vectorizer_file = os.path.abspath("Model/English/D2V/English_vectorizer_D2V.joblib")
+        DT_file = os.path.abspath("Model/English/D2V/English_DTC_model_D2V.joblib")
+        NB_file = os.path.abspath("Model/English/D2V/English_NB_model_D2V.joblib")
+        RFC_file = os.path.abspath("Model/English/D2V/English_RFC_model_D2V.joblib")
+        SVM_file = os.path.abspath("Model/English/D2V/English_SVM_model_D2V.joblib")
+
+        DetailsPre = os.path.abspath("Predict/English/DetailsPre_D2V.csv")
+        Predict = os.path.abspath("Predict/English/Predict_D2V.csv")
     
     print("Load location: ")
     print(vectorizer_file)
@@ -142,6 +152,13 @@ def predict(news, model,vectorizer,Type_Vector):
         tokenized_news = preprocessed_news.split()  # Tokenize text into words
 
         news_vector = sentence_vector(tokenized_news, vectorizer).reshape(1, -1)
+        pred = model.predict(news_vector)
+
+    elif Type_Vector == 'D2V':
+        preprocessed_news = wordopt(news)
+        tokenized_news = preprocessed_news.split()  # Tokenize text into words
+
+        news_vector = vectorizer.infer_vector(tokenized_news).reshape(1, -1)
         pred = model.predict(news_vector)
     return pred[0]
 
@@ -234,20 +251,33 @@ if __name__ == "__main__":
     Predict_Process('CV')
     print('Đã xử lý xong CountVectorizer')
 
-    time.sleep(5)
     print()
     print('--------------------------------------')
     print()
+    time.sleep(5)
 
     print('Bắt đầu xử lý TfidfVectorizer')
     Predict_Process('TF')
     print('Đã xử lý xong TfidfVectorizer')
 
-    time.sleep(5)
     print()
     print('--------------------------------------')
     print()
+    time.sleep(5)
 
     print('Bắt đầu xử lý Word2Vec')
     Predict_Process('W2V')
     print('Đã xử lý xong Word2Vec ')
+
+    print()
+    print('--------------------------------------')
+    print()
+    time.sleep(5)
+
+    print('Bắt đầu xử lý Doc2Vec')
+    Predict_Process('D2V')
+    print('Đã xử lý xong Doc2Vec ')
+
+    print()
+    print('--------------------------------------')
+    print()
