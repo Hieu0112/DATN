@@ -28,17 +28,21 @@
         * Fake: 100 tin
 
 # 4, Xây dựng mô hình
+- Tiền xử lý dữ liệu:
+    + Xử lý tiếng Việt
+    + Xử lý tiếng Anh
+
 - Vector hóa:
     + CountVectorizer
     + TfidfVectorizer
     + Word2Vec
+    + Doc2Vec
 - Code thuật toán:
     + Decision Tree: đã code, đang tối ưu
     + Navie bayes: đã code, đang tối ưu
-    + Random Forest: đã code, đang tối ưu
+    + GaussianNBt: đã code, đang tối ưu
     + Random Forest: đã code, đang tối ưu
     + Support Vector Machines(SVM): đã code, đang tối ưu
-    + CNN: đang tìm hiểu
-- Tạo app demo nhiều dữ liệu cùng lúc: đã code, đang tối ưu
-- Tạo app để demo: đã code, đang tối ưu
+- Tạo app demo nhiều dữ liệu cùng lúc 2 app riêng biệt xử lý tiếng việt + tiếng anh: đã code, đang tối ưu
+- Tạo app để demo: Sửa lại lựa chọn ngôn ngữ -> lựa chọn mô hình -> nhập dữ liệu -> dự đoán -> đang xây dựng
 
