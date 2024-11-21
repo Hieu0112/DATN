@@ -9,7 +9,7 @@
 - Tìm hiểu học máy, học sâu(đã xong)
 - Báo cáo đã xong mục lý thuyết, khái quát
 # 3, Giới thiệu cấu trúc thư mục trong DATN
-**- Data_Collect: Thu thập dữ liệu trên github và code lấy dữ liệu từ các trang web**
+**x Data_Collect: Thu thập dữ liệu trên github và code lấy dữ liệu từ các trang web**
     - DataEnglish
         + Details_English: Dữ liệu nguyên thủy lấy về.
         + Train_English: Dữ liệu đã xử lý ở Subtract_Data_English.py
@@ -31,7 +31,7 @@
         + Details_Real
             * Chi tiết các url đã lấy được các thông tin.
             * Data csv lấy được từ github.
-**- Data_Train: Dữ liệu để train cho demo để xây dựng mô hình.**
+**x Data_Train: Dữ liệu để train cho demo để xây dựng mô hình.**
 **- Data_Test: Dữ liệu để test cho demo sau khi xây dựng mô hình.**
 **- Process_Data_Train: Chuẩn hóa dữ liệu trước khi train và tách dữ liệu lưu vào Data_Train và Data_Test.**
     - Merge_Data: Hợp nhất data để xây dựng mô hình.
