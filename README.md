@@ -23,12 +23,12 @@
         * Chi tiết các url đã lấy được các thông tin.
         * Data csv lấy được từ github.
 - DataReal: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng anh.
-    + Code.
+    + Code
         * collect_urls.py -> Lấy các link bài báo.
         * details_link.py -> Từ link lấy thông tin chi tiết.
         * updateUrls_begin_zero.py -> Đánh dấu link đã xử lý( cập nhật trạng thái xem đã lấy dữ liệu ở link chưa).
     + Urls_Real: Url link bài viết.
-    + Details_Real: 
+    + Details_Real
         * Chi tiết các url đã lấy được các thông tin.
         * Data csv lấy được từ github.
 **3.2, Data_Train: Dữ liệu để train cho demo để xây dựng mô hình**
