@@ -10,43 +10,43 @@
 - Báo cáo đã xong mục lý thuyết, khái quát
 # 3, Giới thiệu cấu trúc thư mục trong DATN
 **Data_Collect: Thu thập dữ liệu trên github và code lấy dữ liệu từ các trang web**
-    - DataEnglish
-        + Details_English: Dữ liệu nguyên thủy lấy về
-        + Train_English: Dữ liệu đã xử lý ở Subtract_Data_English.py
-    - DataFake: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng việt
-        + Code
-            * collect_urls.py -> Lấy các link bài báo
-            * DetailsLink.py -> Từ link lấy thông tin chi tiết
-            * read_excel.py -> Đọc file excel và lưu vào file csv(thông tin thu thập github)
-        + Urls_Fake: Url link bài viết
-        + Details_Fake: 
-            * Chi tiết các url đã lấy được các thông tin
-            * Data csv lấy được từ github
-    - DataReal: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng anh
-        + Code
-            * collect_urls.py -> Lấy các link bài báo
-            * details_link.py -> Từ link lấy thông tin chi tiết
-            * updateUrls_begin_zero.py -> Đánh dấu link đã xử lý( cập nhật trạng thái xem đã lấy dữ liệu ở link chưa)
-        + Urls_Real: Url link bài viết
-        + Details_Real: 
-            * Chi tiết các url đã lấy được các thông tin
-            * Data csv lấy được từ github
+- DataEnglish
+    + Details_English: Dữ liệu nguyên thủy lấy về
+    + Train_English: Dữ liệu đã xử lý ở Subtract_Data_English.py
+- DataFake: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng việt
+    + Code
+        * collect_urls.py -> Lấy các link bài báo
+        * DetailsLink.py -> Từ link lấy thông tin chi tiết
+        * read_excel.py -> Đọc file excel và lưu vào file csv(thông tin thu thập github)
+    + Urls_Fake: Url link bài viết
+    + Details_Fake: 
+        * Chi tiết các url đã lấy được các thông tin
+        * Data csv lấy được từ github
+- DataReal: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng anh
+    + Code
+        * collect_urls.py -> Lấy các link bài báo
+        * details_link.py -> Từ link lấy thông tin chi tiết
+        * updateUrls_begin_zero.py -> Đánh dấu link đã xử lý( cập nhật trạng thái xem đã lấy dữ liệu ở link chưa)
+    + Urls_Real: Url link bài viết
+    + Details_Real: 
+        * Chi tiết các url đã lấy được các thông tin
+        * Data csv lấy được từ github
 
 **Data_Train: Dữ liệu để train cho demo để xây dựng mô hình**
 **Data_Test: Dữ liệu để test cho demo sau khi xây dựng mô hình**
 **Process_Data_Train: Chuẩn hóa dữ liệu trước khi train và tách dữ liệu lưu vào Data_Train và Data_Test**
-    - Merge_Data: Hợp nhất data để xây dựng mô hình
-    - Subtract_Data_English: Lựa chọn 19600 của tin thật và giả tiếng anh > lựa chọn 3 trường để lưu lại vào dataEnglish/Train_English
-        + Random_Data.py: Tách data để thực hiện train và test
+- Merge_Data: Hợp nhất data để xây dựng mô hình
+- Subtract_Data_English: Lựa chọn 19600 của tin thật và giả tiếng anh > lựa chọn 3 trường để lưu lại vào dataEnglish/Train_English
+    + Random_Data.py: Tách data để thực hiện train và test
 **Demo:**
-        + Xây dựng nhiều mô hình thuật toán khác nhau
-        + Code demo sau khi xây dựng và lưu model
+- Xây dựng nhiều mô hình thuật toán khác nhau
+- Code demo sau khi xây dựng và lưu model
 **Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR**
-** Model: Lưu trữ các model ban đầu **
+**Model: Lưu trữ các model ban đầu**
 **Predict: Lưu trữ dự đoán thực thế sau khi xây dựng**
 **AppDetection:**
-    - Phát hiện tin giả: bằng tiếng anh và tiếng việt 
-    - Những thuật toán cuối cùng lựa chọn
+- Phát hiện tin giả: bằng tiếng anh và tiếng việt 
+- Những thuật toán cuối cùng lựa chọn
 **Vector: Lưu trữ vector hóa ngôn ngữ**
 
 # 4, Thu thập dữ liệu
