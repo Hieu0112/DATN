@@ -36,17 +36,17 @@
 **3.4, Process_Data_Train: Chuẩn hóa dữ liệu trước khi train và tách dữ liệu lưu vào Data_Train và Data_Test.**
 - Merge_Data: Hợp nhất data để xây dựng mô hình.
 - Subtract_Data_English: Lựa chọn 19600 của tin thật và giả tiếng anh > lựa chọn 3 trường để lưu lại vào dataEnglish/Train_English.
-    + Random_Data.py: Tách data để thực hiện train và test.
+- Random_Data.py: Tách data để thực hiện train và test.
 **3.5, Demo.**
 - Xây dựng nhiều mô hình thuật toán khác nhau.
 - Code demo sau khi xây dựng và lưu model.
-**3.6, Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR.**
-**3.7, Model: Lưu trữ các model ban đầu.**
-**3.8, Predict: Lưu trữ dự đoán thực thế sau khi xây dựng.**
-**3.9, AppDetection.**
+**3.6, Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR.<br>**
+**3.7, Model: Lưu trữ các model ban đầu.<br>**
+**3.8, Predict: Lưu trữ dự đoán thực thế sau khi xây dựng.<br>**
+**3.9, AppDetection.<br>**
 - Phát hiện tin giả: bằng tiếng anh và tiếng việt .
 - Những thuật toán cuối cùng lựa chọn.
-**3.10, Vector: Lưu trữ vector hóa ngôn ngữ.**
+**3.10, Vector: Lưu trữ vector hóa ngôn ngữ.<br>**
 
 # 4, Thu thập dữ liệu
 - Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
