@@ -22,7 +22,7 @@ set_up_web="https://www.khoi8406.com/post/nhanquyenchovn/ly-do-exonmobil-co-roi-
 
 # Mở một trang chứa reCAPTCHA để người dùng tự giải
 driver.get(set_up_web)
-input("Vui lòng giải reCAPTCHA và nhấn Enter để tiếp tục...")  # Dừng lại cho đến khi reCAPTCHA được giải
+input("Giải reCAPTCHA và nhấn Enter để tiếp tục...")  # Dừng lại cho đến khi reCAPTCHA được giải
 
 # Hàm làm sạch văn bản
 def clean_text(text):
@@ -131,8 +131,9 @@ def process_url(url):
         return None
 
 # Đường dẫn đến file chứa URL và file lưu dữ liệu đã xử lý
-urls_file = 'Urls.csv'
-fake_file = 'dataset_fake.csv'
+urls_file = 'Data_Collect/dataFake/Urls_Fake/Urls.csv'
+
+fake_file = 'Data_Collect/dataFake/Details_Fake/Details_Urls.csv'
 
 # Đọc URL từ file CSV và ghi dữ liệu đã xử lý
 with open(urls_file, mode='r', newline='', encoding='utf-8') as url_file:

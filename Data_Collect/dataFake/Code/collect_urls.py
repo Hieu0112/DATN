@@ -8,11 +8,11 @@ import csv
 import time
 from urllib.parse import urljoin
 
-# Tên file CSV
-csv_file = 'Urls.csv'
-
 # Đọc dữ liệu đã có trong file CSV (nếu có)
 existing_data = set()
+
+Path_url="Data_Collect/dataFake/Urls_Fake/Urls.csv"
+csv_file = Path_url
 
 try:
     with open(csv_file, mode='r', newline='', encoding='utf-8') as file:
@@ -20,7 +20,6 @@ try:
         for row in reader:
             existing_data.add((row['title'], row['link']))
 except FileNotFoundError:
-    # Nếu file chưa tồn tại, chúng ta sẽ tạo file mới
     pass
 
 urls_page = [
@@ -73,20 +72,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 # Dừng chương trình cho đến khi bạn hoàn thành việc giải reCAPTCHA
 driver.get(set_up_web)
 
-input("Vui lòng giải reCAPTCHA và nhấn Enter để tiếp tục...")
-
-# Đọc dữ liệu đã có trong file CSV (nếu có)
-existing_data = set()
-csv_file = 'Urls.csv'
-
-try:
-    with open(csv_file, mode='r', newline='', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            existing_data.add((row['title'], row['link']))
-except FileNotFoundError:
-    # Nếu file chưa tồn tại, chúng ta sẽ tạo file mới
-    pass
+input("Giải reCAPTCHA và nhấn enter để tiếp tục...")
 
 for item in urls:
     url=item["url"]
@@ -132,6 +118,5 @@ for item in urls:
         print(f"Dữ liệu mới đã được ghi vào file {csv_file} từ trang "+ item["url"])
     else:
         print(f"Not data tu trang "+item["url"])
-
 
 driver.quit()

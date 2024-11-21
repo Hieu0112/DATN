@@ -10,6 +10,23 @@
 - Báo cáo đã xong mục lý thuyết, khái quát
 
 # 3, Thu thập dữ liệu
+- Các thư mục trong demo
+    + Data_Collect: Thu thập dữ liệu trên github và code lấy dữ liệu từ các trang web
+        * DataEnglish: Các file csv đã thu thập được > tiếng anh
+        * DataFake: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng việt
+        * DataReal: Các file csv đã thu thập được: các đường link, chi tiết bài báo, dữ liệu github, code để lấy dữ liệu > tiếng anh
+    + Data_Train: Dữ liệu để train cho demo để xây dựng mô hình
+    + Data_Test: Dữ liệu để test cho demo sau khi xây dựng mô hình
+    + Process_Data_Train: Chuẩn hóa dữ liệu trước khi train và tách dữ liệu lưu vào Data_Train và Data_Test
+    + Demo: 
+        * Xây dựng thuật toán
+        * Code demo sau khi xây dựng và lưu model
+    + Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR
+    + Model: Lưu trữ các model ban đầu
+    + Predict: Lưu trữ dự đoán thực thế sau khi xây dựng
+    + Vector: Lưu trữ vector hóa ngôn ngữ
+
+
 - Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
 - Code lấy tin tức từ các trang mạng độc hại: 5 trang web độc hại + 1 link git
 - Data Train:

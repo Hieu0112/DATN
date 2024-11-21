@@ -111,6 +111,6 @@ for item in urls:
             for row in link_data:
                 writer.writerow(row)
 
-        print(f"Dữ liệu mới đã được ghi vào file {csv_file}")
+        print(f"Dữ liệu mới đã được ghi vào file {csv_file} từ trang "+ item["url"])
     else:
-        print("Dữ liệu đã có trong file")
+        print(f"Not data tu trang " + item["url"])

@@ -10,7 +10,7 @@ df = pd.read_excel('dataFake/file_xlsx/nhatkyyeunuoc_blogspot_com_fake.xlsx', he
 df.columns = ['title', 'text', 'author']
 
 # Tên file CSV bạn muốn tạo
-csv_file = 'dataFake/nhatkyyeunuoc_blogspot_com_fake.csv'
+csv_file = 'dataFake/Details_Fake/nhatkyyeunuoc_blogspot_com_fake.csv'
 
 # Kiểm tra nếu file CSV chưa tồn tại, tạo file và thêm tiêu đề
 if not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0:
