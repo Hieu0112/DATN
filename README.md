@@ -8,6 +8,7 @@
 - Tìm hiểu tin giả(đã xong)
 - Tìm hiểu học máy, học sâu(đã xong)
 - Báo cáo đã xong mục lý thuyết, khái quát
+
 # 3, Giới thiệu cấu trúc thư mục trong DATN
 - Data_Collect: Thu thập dữ liệu trên github và code lấy dữ liệu từ các trang web
     - DataEnglish
@@ -41,12 +42,13 @@
     - Xây dựng nhiều mô hình thuật toán khác nhau.
     - Code demo sau khi xây dựng và lưu model.
 - Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR.
-- Model: Lưu trữ các model ban đầu.**
+- Model: Lưu trữ các model ban đầu.
 - Predict: Lưu trữ dự đoán thực thế sau khi xây dựng.
 - AppDetection.
     - Phát hiện tin giả: bằng tiếng anh và tiếng việt .
     - Những thuật toán cuối cùng lựa chọn.
 - Vector: Lưu trữ vector hóa ngôn ngữ.
+
 # 4, Thu thập dữ liệu
 - Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
 - Code lấy tin tức từ các trang mạng độc hại: 5 trang web độc hại + 1 link git
