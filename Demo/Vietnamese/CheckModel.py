@@ -11,9 +11,6 @@ import numpy as np
 warnings.filterwarnings("ignore")
 from pyvi import ViTokenizer
 
-
-
-
 def wordopt(text):
     text = text.lower()
     text = re.sub('https?:\/\/.*[\r\n]*', ' ', text)
@@ -49,17 +46,9 @@ def preprocess_nostop(text):
     text = remove_special_characters(text)
     return text
 
-
 # Compound Vietnamese word
 def tokenizerVN(text):
     return ViTokenizer.tokenize(text)
-# Tokenizer
-def tokenizer(text):
-    return word_tokenize(text)
-# Count token
-def count_token(text):
-    word = tokenizerVN(str(text))
-    return len(word.split())
 
 def tokenize(sentence):
     return tokenizerVN(sentence).split()

@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore")
 stopword=list(stopwords.words('english'))
 
 def tokenize(sentence):
-    return word_tokenize(sentence, format = 'word')
+    return word_tokenize(sentence)
 
 import string
 def wordopt(text):
