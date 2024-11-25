@@ -16,7 +16,7 @@ file_stopword = os.path.join("Data_Train", "vietnamese-stopwords-dash.txt")
 with open(file_stopword, 'r', encoding='utf-8') as file:
     stopwords = file.read().split('\n')
 
-def remove_special_characters(text):
+def wordopt(text):
     ## Remove punctuations
     text = text.lower()
     # Loại bỏ các dấu câu đặc biệt
@@ -45,22 +45,12 @@ def remove_special_characters(text):
 
     return update_text.strip()
 
-def preprocess_nostop(text):
-    text = remove_special_characters(text)
-    return text
-
 class Vietnamese:
-    def __init__(self,title=None, text=None) -> None:
+    def __init__(self,title=None, text=None,vectorizer_file = None,smv_file = None) -> None:
         self.title = title
         self.text = text
-        self.vectorizer_file = os.path.abspath("Vector/Vietnamese/Vietnamese_vectorizer_TF.joblib")
-        self.smv_file = os.path.abspath("Vector/Vietnamese/Vietnamese_RFC_model_TF.joblib")
-
-    def set_title(self, title):
-        self.title = title
-
-    def set_text(self, text):
-        self.text = text
+        self.vectorizer_file = vectorizer_file
+        self.smv_file = smv_file
 
     def LoadLocation(self):
         vectorizer = joblib.load(self.vectorizer_file)
@@ -72,7 +62,7 @@ class Vietnamese:
         new_def_test = pd.DataFrame(testing_news)
 
         new_def_test["news"] = new_def_test["news"].apply(tokenizerVN)
-        new_def_test["news"] = new_def_test["news"].apply(preprocess_nostop)
+        new_def_test["news"] = new_def_test["news"].apply(wordopt)
         new_x_test = new_def_test["news"]
 
         new_xv_test = vectorizer.transform(new_x_test)

@@ -7,14 +7,11 @@ from nltk.tokenize import word_tokenize
 
 warnings.filterwarnings("ignore")
 from nltk.corpus import stopwords
-
-warnings.filterwarnings("ignore")
 stopwords = list(stopwords.words('english'))
 
 def tokenize(sentence):
     return word_tokenize(sentence)
 
-import string
 def wordopt(text):
 
     update_text =""
@@ -61,11 +58,11 @@ def wordopt(text):
     return update_text.strip()
 
 class English:
-    def __init__(self,title=None, text=None) -> None:
+    def __init__(self,title=None, text=None,vectorizer_file = None,smv_file = None) -> None:
         self.title = title
         self.text = text
-        self.vectorizer_file = os.path.abspath("Vector/English/English_vectorizer_TF.joblib")
-        self.smv_file = os.path.abspath("Vector/English/English_SVM_model_TF.joblib")
+        self.vectorizer_file = vectorizer_file
+        self.smv_file = smv_file
 
     def set_title(self, title):
         self.title = title
