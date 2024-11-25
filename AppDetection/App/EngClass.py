@@ -9,7 +9,7 @@ warnings.filterwarnings("ignore")
 from nltk.corpus import stopwords
 
 warnings.filterwarnings("ignore")
-stopword=list(stopwords.words('english'))
+stopwords = list(stopwords.words('english'))
 
 def tokenize(sentence):
     return word_tokenize(sentence)
@@ -34,22 +34,29 @@ def wordopt(text):
     text=re.sub(r"\'d"," would",text)
     text=re.sub(r"won't","will not",text)
     text=re.sub(r"can't","cannot",text)
-
-
-    text=re.sub(r"[-()\"#!@$%^&*{}?.,:]"," ",text)
-    text=re.sub(r"\s+"," ",text)
-
-    text = re.sub('\[.*?\]', '', text)
-    text = re.sub("\\W", " ", text)
-    text = re.sub('https?://\S+|www\.\S+', '', text)
+    
+    # Loại bỏ các dấu câu đặc biệt
+    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
+    # Loại bỏ các liên kết URL
+    text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
+    # Loại bỏ các thẻ HTML
     text = re.sub('<.*?>+', '', text)
-    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
-    text = re.sub('\n', '', text)
+    # Loại bỏ các chuỗi nằm trong dấu ngoặc vuông
+    text = re.sub('\[.*?\]', '', text)
+    # Loại bỏ ký tự không phải chữ và số
+    text = re.sub('\\W', ' ', text)
+    # Loại bỏ các từ chứa chữ số
     text = re.sub('\w*\d\w*', '', text)
+    # Loại bỏ dấu xuống dòng
+    text = re.sub('\n', ' ', text)
+    # Loại bỏ nhiều khoảng trắng liên tiếp
+    text = re.sub('\s+', ' ', text)
+    # Xóa khoảng trắng ở đầu và cuối văn bản
+    text = text.strip()
 
     for word in text.split():
-        if word not in stopword:
-            update_text+=word+" "
+        if word not in stopwords:
+            update_text += word+" "
     
     return update_text.strip()
 
@@ -68,8 +75,8 @@ class English:
 
     def LoadLocation(self):
         vectorizer = joblib.load(self.vectorizer_file)
-        SVM_model = joblib.load(self.smv_file)
-        return vectorizer, SVM_model
+        model = joblib.load(self.smv_file)
+        return vectorizer, model
     
     def predict(self,news, model,vectorizer):
         testing_news = {"news": [news]}
@@ -83,6 +90,6 @@ class English:
 
     def Predict_Process(self):
         vectorizer,SVM_model = self.LoadLocation()
-        news = ' |title| '+ self.title +' |text| '+  self.text
+        news =  self.title + " " +  self.text
         pred_svm = self.predict(news,SVM_model,vectorizer)
         return pred_svm
