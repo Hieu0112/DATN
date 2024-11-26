@@ -172,7 +172,7 @@ def Predict_Process(Type_Vector):
 
     for _, row in test_data.iterrows():
         # Combine 'title' and 'text' for the test input and preprocess the text
-        news = ' |title| '+ row["title"] +' |text| '+  row["text"] 
+        news = row["title"] + ' ' +  row["text"] 
 
         pred_dt = predict(news,DTC_model,vectorizer,Type_Vector)
         y_pred_dt.append(pred_dt)
