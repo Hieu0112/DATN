@@ -9,8 +9,8 @@ from pyvi import ViTokenizer
 def tokenizerVN(text):
         return ViTokenizer.tokenize(text)
 
-def tokenize(sentence):
-    return tokenizerVN(sentence).split()
+# def tokenize(sentence):
+#     return tokenizerVN(sentence).split()
 
 file_stopword = os.path.join("Data_Train", "vietnamese-stopwords-dash.txt")
 with open(file_stopword, 'r', encoding='utf-8') as file:
@@ -63,6 +63,7 @@ class Vietnamese:
 
         new_def_test["news"] = new_def_test["news"].apply(tokenizerVN)
         new_def_test["news"] = new_def_test["news"].apply(wordopt)
+        
         new_x_test = new_def_test["news"]
 
         new_xv_test = vectorizer.transform(new_x_test)

@@ -9,8 +9,8 @@ warnings.filterwarnings("ignore")
 from nltk.corpus import stopwords
 stopwords = list(stopwords.words('english'))
 
-def tokenize(sentence):
-    return word_tokenize(sentence)
+# def tokenize(sentence):
+#     return word_tokenize(sentence)
 
 def wordopt(text):
 

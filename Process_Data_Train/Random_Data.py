@@ -10,13 +10,14 @@ import os
 
 # df = pd.read_csv(f'Data_Collect/dataFake/Fake.csv')
 # df = pd.read_csv(f'Data_Collect/dataReal/Real.csv')
-max_data=19500
+max_data=3000
 
 
-train_file = 'Data_Train/English.csv'
-test_file = 'Data_Test/Test_English.csv'
+train_file = 'Data_Train/English3.csv'
+test_file = 'Data_Test/Test_EnglishAll.csv'
 
-df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Fake.csv')
+# df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Fake.csv')
+df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Train2.csv')
 
 
 # Sample without replacement and set a random seed

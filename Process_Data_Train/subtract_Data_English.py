@@ -3,6 +3,7 @@ import csv
 import re
 so_luong = 1
 # Thư mục chứa các file CSV
+Check_data = set()
 
 Check="True"
 csv_file = f"Data_Collect/dataEnglish/Details_English/{Check}.csv"
@@ -28,15 +29,21 @@ def Update_label(csv_file, csv_file_data):
         if 'fake' in csv_file.lower():
             label = '1'
 
-        if so_luong <=19600:
+        if so_luong <=20500:
             # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
-            if len(text) > 2 * len(title) and len(text) >= 100 :
+            title_update = title.replace('\n', ' ')
+            text_update = text.replace('\n', ' ').replace('Reuters','')
+
+            lenSet=len(Check_data)
+
+            Check_data.add(title_update+" "+text_update)
+            if len(text) > 2 * len(title) and len(text) >= 100 and lenSet+1==len(Check_data):
                 article_data = {
-                    'title': title.replace('\n', ' '),
-                    'text': text.replace('\n', ' '),
+                    'title': title_update,
+                    'text': text_update,
                     'label': label
                 }
-                so_luong+=1
+                so_luong += 1
         
                 # Ghi dữ liệu vào file CSV
                 with open(csv_file_data, mode='a', newline='', encoding='utf-8') as file:
