@@ -31,12 +31,12 @@ def Update_label(csv_file, csv_file_data):
 
         if so_luong <=20500:
             # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
-            title_update = title.replace('\n', ' ')
-            text_update = text.replace('\n', ' ').replace('Reuters','')
+            title_update = title.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ')
+            text_update = text.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ').replace('Reuters',' ')
 
             lenSet=len(Check_data)
 
-            Check_data.add(title_update+" "+text_update)
+            Check_data.add(title_update +" "+ text_update)
             if len(text) > 2 * len(title) and len(text) >= 100 and lenSet+1==len(Check_data):
                 article_data = {
                     'title': title_update,

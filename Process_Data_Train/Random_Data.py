@@ -13,10 +13,16 @@ import os
 max_data=3000
 
 
-train_file = 'Data_Train/English3.csv'
+# train_file = 'Data_Train/Train1.csv'
+# test_file = 'Data_Test/Test_EnglishAll.csv'
+
+# df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/True.csv')
+# df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Fake.csv')
+
+
+train_file = 'Data_Train/Train3.csv'
 test_file = 'Data_Test/Test_EnglishAll.csv'
 
-# df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Fake.csv')
 df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Train2.csv')
 
 

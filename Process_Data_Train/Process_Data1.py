@@ -17,8 +17,10 @@ def check_dup(file_name):
         for row in rows:
             title = row['title']
             text = row['text']
-            title_update = title.replace('\u2028', '').replace('\u2029', '').replace('\r', '').replace('\n', '')
-            text_update = text.replace('\u2028', '').replace('\u2029', '').replace('\r', '').replace('\n', '').replace('Reuters','')
+            title = re.sub(r"[ '“,”\"]+", ' ', title).strip()  # Thay thế dấu ' “,”
+            text = re.sub(r"[ '“,”\"]+", ' ', text).strip()  # Thay thế dấu ' “,”
+            title_update = title.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ')
+            text_update = text.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ').replace('Reuters',' ')
             check_2.add(title_update)
             check_3.add(text_update)
 
@@ -49,8 +51,8 @@ def Update_label(csv_file, csv_file_data):
 
         if so_luong <=20000:
             # Ghi dữ liệu bài báo khi độ dài text > độ dài của title
-            title_update = title.replace('\u2028', '').replace('\u2029', '').replace('\r', '').replace('\n', '')
-            text_update = text.replace('\u2028', '').replace('\u2029', '').replace('\r', '').replace('\n', '').replace('Reuters','')
+            title_update = title.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ')
+            text_update = text.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ').replace('Reuters',' ')
 
             len2=len(check_2)
             len3=len(check_3)

@@ -33,7 +33,7 @@ def wordopt(text):
     text=re.sub(r"can't","cannot",text)
     
     # Loại bỏ các dấu câu đặc biệt
-    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
+    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>’‘؟?@[\]^`{|}~“”…؛"""), ' ', text)
     # Loại bỏ các liên kết URL
     text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
     # Loại bỏ các thẻ HTML
