@@ -10,20 +10,22 @@ import os
 
 # df = pd.read_csv(f'Data_Collect/dataFake/Fake.csv')
 # df = pd.read_csv(f'Data_Collect/dataReal/Real.csv')
-max_data=3000
 
 
-# train_file = 'Data_Train/Train1.csv'
-# test_file = 'Data_Test/Test_EnglishAll.csv'
-
+# train_file = 'Data_Train/English1.csv'
 # df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/True.csv')
 # df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Fake.csv')
 
+# max_data=3000
+# train_file = 'Data_Train/English2.csv'
+# df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Train2.csv')
 
-train_file = 'Data_Train/Train3.csv'
+max_data=18500
+train_file = 'Data_Train/English3.csv'
+df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Train1.csv')
+
+
 test_file = 'Data_Test/Test_EnglishAll.csv'
-
-df = pd.read_csv(f'Data_Collect/dataEnglish/Train_English/Train2.csv')
 
 
 # Sample without replacement and set a random seed

@@ -26,7 +26,7 @@ vectorizer_English = os.path.abspath("Vector/English/English_vectorizer_TF.jobli
 model_english = os.path.abspath("Vector/English/English_SVM_model_TF.joblib")
 
 test_data_path = os.path.abspath("Data_Test/Test_EnglishAll.csv")
-test_data = pd.read_csv(test_data_path)
+test_data = pd.read_csv(test_data_path, on_bad_lines='skip')
 data=[]
 for _,i in test_data.iterrows():
     title=i['title']

@@ -20,30 +20,23 @@ def wordopt(text):
     ## Remove punctuations
     text = text.lower()
     # Loại bỏ các dấu câu đặc biệt
-    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
-    # Loại bỏ các liên kết URL
+    text = re.sub('[%s]' % re.escape("""!’‘–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
     text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
-    # Loại bỏ các thẻ HTML
-    text = re.sub('<.*?>+', '', text)
-    # Loại bỏ các chuỗi nằm trong dấu ngoặc vuông
-    text = re.sub('\[.*?\]', '', text)
-    # Loại bỏ ký tự không phải chữ và số
+    text = re.sub('<.*?>+', ' ', text)
+    # text = re.sub('\[.*?\]', ' ', text)
     text = re.sub('\\W', ' ', text)
-    # Loại bỏ các từ chứa chữ số
-    text = re.sub('\w*\d\w*', '', text)
-    # Loại bỏ dấu xuống dòng
+    # text = re.sub('\w*\d\w*', ' ', text)
     text = re.sub('\n', ' ', text)
-    # Loại bỏ nhiều khoảng trắng liên tiếp
     text = re.sub('\s+', ' ', text)
-    # Xóa khoảng trắng ở đầu và cuối văn bản
+    text = re.sub(r'\d+', ' ', text)
     text = text.strip()
 
-    update_text = ""
-    for word in text.split():
-        if word not in stopwords:
-            update_text += word+" "
+    # update_text = ""
+    # for word in text.split():
+    #     if word not in stopwords:
+    #         update_text += word+" "
 
-    return update_text.strip()
+    return text.strip()
 
 class Vietnamese:
     def __init__(self,title=None, text=None,vectorizer_file = None,smv_file = None) -> None:
@@ -61,8 +54,8 @@ class Vietnamese:
         testing_news = {"news": [news]}
         new_def_test = pd.DataFrame(testing_news)
 
-        new_def_test["news"] = new_def_test["news"].apply(tokenizerVN)
         new_def_test["news"] = new_def_test["news"].apply(wordopt)
+        new_def_test["news"] = new_def_test["news"].apply(tokenizerVN)
         
         new_x_test = new_def_test["news"]
 

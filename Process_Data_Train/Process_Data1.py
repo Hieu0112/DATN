@@ -17,8 +17,12 @@ def check_dup(file_name):
         for row in rows:
             title = row['title']
             text = row['text']
-            title = re.sub(r"[ '“,”\"]+", ' ', title).strip()  # Thay thế dấu ' “,”
-            text = re.sub(r"[ '“,”\"]+", ' ', text).strip()  # Thay thế dấu ' “,”
+            
+            title = re.sub(r"[ '“,”\"]+", ' ', title)  # Thay thế dấu ' “,”
+            text = re.sub(r"[ '“,”\"]+", ' ', text) # Thay thế dấu ' “,”
+            title = title.replace(',', ' ')
+            text = text.replace(',', ' ')
+
             title_update = title.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ')
             text_update = text.replace('\u2028', ' ').replace('\u2029', ' ').replace('\r', ' ').replace('\n', ' ').replace('Reuters',' ')
             check_2.add(title_update)
@@ -46,8 +50,10 @@ def Update_label(csv_file, csv_file_data):
         text = row['text']
         label = row['label']
 
-        title = re.sub(r"[ '“,”\"]+", ' ', title).strip()  # Thay thế dấu ' “,”
-        text = re.sub(r"[ '“,”\"]+", ' ', text).strip()  # Thay thế dấu ' “,”
+        title = re.sub(r"[ '“,”\"]+", ' ', title)  # Thay thế dấu ' “,”
+        text = re.sub(r"[ '“,”\"]+", ' ', text) # Thay thế dấu ' “,”
+        title = title.replace(',', ' ')
+        text = text.replace(',', ' ')
 
         if so_luong <=20000:
             # Ghi dữ liệu bài báo khi độ dài text > độ dài của title

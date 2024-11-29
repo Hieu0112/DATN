@@ -5,7 +5,7 @@ so_luong = 1
 # Thư mục chứa các file CSV
 Check_data = set()
 
-Check="True"
+Check="Fake"
 csv_file = f"Data_Collect/dataEnglish/Details_English/{Check}.csv"
 csv_file_data = f"Data_Collect/dataEnglish/Train_English/{Check}.csv"
 def Update_label(csv_file, csv_file_data):
@@ -18,14 +18,13 @@ def Update_label(csv_file, csv_file_data):
     for row in rows:
         title = row['title']
         text = row['text']
-        subject = row['subject']
-        date= row['date']
         label = '0'
 
-        title = re.sub(r"[ '“,”\"]+", ' ', title).strip()  # Thay thế dấu ' “,”
-        text = re.sub(r"[ '“,”\"]+", ' ', text).strip()  # Thay thế dấu ' “,”
-        # Nếu file là file chứa tin thật, gán nhãn là 0
-        # Nếu file là file chứa tin giả, gán nhãn là 1
+        title = re.sub(r"[ '“,”\"]+", ' ', title)  # Thay thế dấu ' “,”
+        text = re.sub(r"[ '“,”\"]+", ' ', text) # Thay thế dấu ' “,”
+        title = title.replace(',', ' ')
+        text = text.replace(',', ' ')
+
         if 'fake' in csv_file.lower():
             label = '1'
 

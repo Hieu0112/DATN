@@ -2,8 +2,6 @@ import joblib
 import re
 import pandas as pd
 import warnings
-import os
-from nltk.tokenize import word_tokenize
 
 warnings.filterwarnings("ignore")
 from nltk.corpus import stopwords
@@ -32,30 +30,22 @@ def wordopt(text):
     text=re.sub(r"won't","will not",text)
     text=re.sub(r"can't","cannot",text)
     
-    # Loại bỏ các dấu câu đặc biệt
-    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>’‘؟?@[\]^`{|}~“”…؛"""), ' ', text)
-    # Loại bỏ các liên kết URL
+    text = re.sub('[%s]' % re.escape("""!’‘–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
     text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
-    # Loại bỏ các thẻ HTML
-    text = re.sub('<.*?>+', '', text)
-    # Loại bỏ các chuỗi nằm trong dấu ngoặc vuông
-    text = re.sub('\[.*?\]', '', text)
-    # Loại bỏ ký tự không phải chữ và số
+    text = re.sub('<.*?>+', ' ', text)
+    # text = re.sub('\[.*?\]', ' ', text)
     text = re.sub('\\W', ' ', text)
-    # Loại bỏ các từ chứa chữ số
-    text = re.sub('\w*\d\w*', '', text)
-    # Loại bỏ dấu xuống dòng
+    # text = re.sub('\w*\d\w*', ' ', text)
     text = re.sub('\n', ' ', text)
-    # Loại bỏ nhiều khoảng trắng liên tiếp
     text = re.sub('\s+', ' ', text)
-    # Xóa khoảng trắng ở đầu và cuối văn bản
+    text = re.sub(r'\d+', ' ', text)
     text = text.strip()
 
-    for word in text.split():
-        if word not in stopwords:
-            update_text += word+" "
+    # for word in text.split():
+    #     if word not in stopwords:
+    #         update_text += word+" "
     
-    return update_text.strip()
+    return text.strip()
 
 class English:
     def __init__(self,title=None, text=None,vectorizer_file = None,smv_file = None) -> None:
