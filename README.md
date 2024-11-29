@@ -56,16 +56,16 @@
     + Data Việt Nam: 12600 tin
         * True: 6600 tin
         * Fake: 6000 tin
-    - Data English: 34200 tin 
-        * True: 17500 tin
-        * Fake: 16700 tin
+    - Data English: 55500 tin 
+        * True: 30446 tin
+        * Fake: 25054 tin
 - Data Test:
     + Data Việt Nam: 1367 tin
-        * True: 1277 tin
-        * Fake: 90 tin
-    - Data English: 500 tin 
-        * True: 336 tin
-        * Fake: 164 tin
+        * True: 1277 tin -> dự đoán đúng 94%
+        * Fake: 90 tin -> dữ đoán đúng 83.3%
+    - Data English: 3430 tin 
+        * True: 2092 tin -> dự đoán đúng 95.5%
+        * Fake: 1338 tin -> dự đoán đúng 91.2%
 
 # 5, Xây dựng mô hình
 - Tiền xử lý dữ liệu:
