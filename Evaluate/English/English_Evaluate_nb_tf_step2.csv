@@ -1,0 +1,7 @@
+evaluation metrics,Value
+Precision (PPV),0.85973207249803
+Recall (TPR),0.872241765270227
+Accuracy (ACC),0.8782702702702703
+F1-Score,0.8659417414080482
+False Positive Rate (FPR),0.11678257446529326
+False Negative Rate (FNR),0.12775823472977293

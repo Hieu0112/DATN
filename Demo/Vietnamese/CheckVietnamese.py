@@ -1,37 +1,44 @@
 import joblib
-from underthesea import word_tokenize
 import re
 import pandas as pd
 import warnings
 import os
-from sklearn.metrics import accuracy_score
 import time
-import numpy as np
+from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score, confusion_matrix
 
 warnings.filterwarnings("ignore")
+import numpy as np
 from pyvi import ViTokenizer
 
-def wordopt(text):
-    text = text.lower()
-    text = re.sub('https?:\/\/.*[\r\n]*', ' ', text)
-    text = re.sub('[^\w\s]', ' ', text) 
-    text = re.sub('\n', ' ', text)
-    return text
+def tokenizerVN(text):
+        return ViTokenizer.tokenize(text)
 
-#delete numbers
-def delete_numbers(text):
-    return re.sub(r'\d+', ' ', text)
-#lower case
-def lower(text):
-    return text.lower()
-#delete special characters
-def remove_special_characters(text):
+file_stopword = os.path.join("Data_Train", "vietnamese-stopwords-dash.txt")
+with open(file_stopword, 'r', encoding='utf-8') as file:
+    stopwords = file.read().split('\n')
+
+def wordopt(text):
     ## Remove punctuations
-    text = re.sub('[%s]' % re.escape("""!–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…"""), ' ', text)
-    text = text.replace('؛',"", )
+    text = text.lower()
+    # Loại bỏ các dấu câu đặc biệt
+    text = re.sub('[%s]' % re.escape("""!’‘–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
+    text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
+    text = re.sub('<.*?>+', ' ', text)
+    # text = re.sub('\[.*?\]', ' ', text)
+    text = re.sub('\\W', ' ', text)
+    # text = re.sub('\w*\d\w*', ' ', text)
+    text = re.sub('\n', ' ', text)
     text = re.sub('\s+', ' ', text)
-    text =  " ".join(text.split())
+    text = re.sub(r'\d+', ' ', text)
+    text = text.strip()
+
+    # update_text = ""
+    # for word in text.split():
+    #     if word not in stopwords:
+    #         update_text += word+" "
+
     return text.strip()
+
 #delete stop words
 # def remove_stopwords(text):
 #     # words = text.split()
@@ -39,19 +46,6 @@ def remove_special_characters(text):
 #     # mean_text = " ".join(mean_word)
 #     clean_tokens = ' '.join([word for word in text.split() if word not in stopwords])
 #     return clean_tokens
-
-def preprocess_nostop(text):
-    text = delete_numbers(text)
-    text = lower(text)
-    text = remove_special_characters(text)
-    return text
-
-# Compound Vietnamese word
-def tokenizerVN(text):
-    return ViTokenizer.tokenize(text)
-
-def tokenize(sentence):
-    return tokenizerVN(sentence).split()
 
 def sentence_vector(sentence, model):
     # Calculate average Word2Vec vector for each word in sentence if it exists in the vocabulary
@@ -137,8 +131,10 @@ def predict(news, model,vectorizer,Type_Vector):
         testing_news = {"news": [news]}
         new_def_test = pd.DataFrame(testing_news)
 
+        new_def_test["news"] = new_def_test["news"].apply(wordopt)
         new_def_test["news"] = new_def_test["news"].apply(tokenizerVN)
-        new_def_test["news"] = new_def_test["news"].apply(preprocess_nostop)
+ 
+
         if Type_Vector == 'CV' or Type_Vector =='TF':
             new_x_test = new_def_test["news"]
             new_xv_test = vectorizer.transform(new_x_test)

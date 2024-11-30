@@ -40,22 +40,17 @@ def wordopt(text):
     text=re.sub(r"can't","cannot",text)
 
 
-    text=re.sub(r"[-()\"#!@$%^&*{}?.,:]"," ",text)
-    text=re.sub(r"\s+"," ",text)
-
-    text = re.sub('\[.*?\]', '', text)
-    text = re.sub("\\W", " ", text)
-    text = re.sub('https?://\S+|www\.\S+', '', text)
-    text = re.sub('<.*?>+', '', text)
-    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
-    text = re.sub('\n', '', text)
-    text = re.sub('\w*\d\w*', '', text)
-
-    for word in text.split():
-        if word not in stopword:
-            update_text+=word+" "
+    text = re.sub('[%s]' % re.escape("""!’‘–"#$%&'()*+,،-./:;<=>؟?@[\]^`{|}~“”…؛"""), ' ', text)
+    text = re.sub('https?://\S+|www\.\S+|https?:\/\/.*[\r\n]*', ' ', text)
+    text = re.sub('<.*?>+', ' ', text)
+    # text = re.sub('\[.*?\]', ' ', text)
+    text = re.sub('\\W', ' ', text)
+    # text = re.sub('\w*\d\w*', ' ', text)
+    text = re.sub('\n', ' ', text)
+    text = re.sub('\s+', ' ', text)
+    text = re.sub(r'\d+', ' ', text)
     
-    return update_text.strip()
+    return text.strip()
 
 def sentence_vector(sentence, model):
     # Calculate average Word2Vec vector for each word in sentence if it exists in the vocabulary
@@ -132,7 +127,7 @@ def LoadLocation(_Vector):
 
     return vectorizer, DTC_model, NB_model, RFC_model, SVM_model, DetailsPre, Predict
 
-test_data_path = os.path.abspath("Data_Test/Test_English.csv")
+test_data_path = os.path.abspath("Data_Test/Test_EnglishAll.csv")
 test_data = pd.read_csv(test_data_path)
 
 # Prediction function
