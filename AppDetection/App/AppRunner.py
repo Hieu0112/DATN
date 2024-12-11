@@ -68,6 +68,3 @@ with open(file_path, mode='w', newline='', encoding='utf-8') as file:
         writer.writerow(item)
 
 print(f'Data has been saved to {file_path}')
-
-
-# Dự đoán 1 dữ liệu nhập
