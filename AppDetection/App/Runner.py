@@ -135,7 +135,7 @@ if st.button("Dự đoán"):
         true = "Đây là tin có thể tin tưởng."
         false = "Đây là tin không thể tin tưởng."
         # st.text("Loại ngôn ngữ đang dự đoán là: "+ lang)
-        st.markdown(f'<p class="big-text">Loại ngôn ngữ đang dự đoán là: {lang}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p class="big-text">Loại ngôn ngữ đang dự đoán là: {lang}.</p>', unsafe_allow_html=True)
         if result == 0:
             st.markdown(f'<p class="big-text-success">{true}</p>', unsafe_allow_html=True)
         else:
