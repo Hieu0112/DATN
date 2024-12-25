@@ -52,6 +52,50 @@ def checker(title,text):
 
 st.title("Phát hiện tin giả")
 
+st.markdown(
+    """
+    <style>
+
+    .stTextArea p {
+            font-size: 25px !important;
+    }
+    .stTextArea textarea {
+        font-size: 20px !important;
+    }
+
+    .stButton button {
+        padding: 8px 15px !important;  /* Tăng kích thước padding để nút lớn hơn */
+        border-radius: 10px !important;  /* Để các góc của nút mềm mại hơn */
+    }
+
+    .stButton p {
+        font-size: 18px !important;
+    }
+
+    .big-text {
+        font-size: 20px !important; 
+        font-weight: bold;
+    }
+
+    .big-text-success {
+        font-size: 25px !important;  /* Đặt cỡ chữ của thông báo thành công là 30px */
+        font-weight: bold;
+        color: #4CAF50;  /* Màu xanh của thông báo thành công */
+    }
+
+    .big-text-error {
+        font-size: 25px !important; 
+        font-weight: bold;
+        color: #F44336;  /* Màu đỏ của thông báo lỗi */
+    }
+
+    </style>
+    
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Khởi tạo trạng thái cho title và text
 if "title" not in st.session_state:
     st.session_state.title = ""
@@ -87,12 +131,13 @@ text_checker = st.empty()
 if st.button("Dự đoán"):
     if checker(title, text):
         result = Predict(title,text) 
-        lang = "Việt Nam" if Language(text) =='vi' else "English"
-        true = "Đây là tin có thể tin tưởng." if Language(text) =='vi' else "This is trustworthy news."
-        false = "Đây là tin không thể tin tưởng." if Language(text) =='vi' else "This is unreliable news."
-        st.text("Loại ngôn ngữ đang dự đoán là: "+ lang)
+        lang = "Việt Nam" if Language(text) =='vi' else "Tiếng Anh"
+        true = "Đây là tin có thể tin tưởng."
+        false = "Đây là tin không thể tin tưởng."
+        # st.text("Loại ngôn ngữ đang dự đoán là: "+ lang)
+        st.markdown(f'<p class="big-text">Loại ngôn ngữ đang dự đoán là: {lang}</p>', unsafe_allow_html=True)
         if result == 0:
-            st.success(true)
+            st.markdown(f'<p class="big-text-success">{true}</p>', unsafe_allow_html=True)
         else:
-            st.error(false)
+            st.markdown(f'<p class="big-text-error">{false}</p>', unsafe_allow_html=True)
 
