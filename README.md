@@ -38,16 +38,35 @@
     - Merge_Data: Hợp nhất data để xây dựng mô hình.
     - Subtract_Data_English: Lựa chọn 19600 của tin thật và giả tiếng anh > lựa chọn 3 trường để lưu lại vào dataEnglish/Train_English.
     - Random_Data.py: Tách data để thực hiện train và test.
-- Demo.
-    - Xây dựng nhiều mô hình thuật toán khác nhau.
-    - Code demo sau khi xây dựng và lưu model.
-- Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR.
-- Model: Lưu trữ các model ban đầu.
-- Predict: Lưu trữ dự đoán thực thế sau khi xây dựng.
-- AppDetection.
-    - Phát hiện tin giả: bằng tiếng anh và tiếng việt .
-    - Những thuật toán cuối cùng lựa chọn.
-- Vector: Lưu trữ vector hóa ngôn ngữ.
+
+- Khu vực xây dựng thử nghiệm nhiều mô hình: Khu vực thử nghiệm trước khi xây dựng kịch bản ĐATN
+    - Demo: Thư mục xây dựng nhiều mô hình.
+        - Xây dựng nhiều mô hình thuật toán khác nhau.
+        - Code demo sau khi xây dựng và lưu model.
+    - Model: Lưu trữ các model ban đầu.
+    - Predict: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR của các mô hình.
+
+- Khu vực demo code: Khu vực triển khai kịch bản demo ĐATN
+    - AppDetection: Thư mục demo gồm code mô hình và app kiểm thử
+        - Các file csv là dữ liệu thử nghiệm.
+        - Phát hiện tin giả: bằng tiếng anh và tiếng việt.
+            - English: Mô hình tiếng anh.
+            - Vietnamese: Mô hình tiếng việt.
+        - Kiểm thử với bộ dữ liệu.
+            - AppRuner.py: Kiểm thử dữ liệu theo 1 tập dữ liệu csv đánh giá độ chính xác.
+            - Check/checkGiaTri: Đánh giá PPV, TPR, ACC, F1, FPR, FNR sau khi chạy AppRuner.py
+        - Kiểm thử với 1 tin tức.
+            - run.txt: Chạy lệnh cmd để chạy chương trình.
+            - Runner.py: Model cuối cùng đánh giá tin thật, giả với từng tin.
+            - VietClass: Class tiếng Việt để xử lý với ngôn ngữ tiếng Việt.
+            - EngClass: Class tiếng Anh để xử lý với ngôn ngữ tiếng Anh.
+        - demodata: Nơi lưu trữ code thu thập bộ dữ liệu tin tiếng việt để thử nghiệm chạy Runner.py
+    - Vector: Lưu trữ mô hình học máy và vector hóa của tiếng anh và tiếng việt.
+    - Evaluate: Tính toán các độ đo PPV, TPR, ACC, F1, FPR, FNR của các mô hình.
+
+- Thử nghiệm các tính năng trong mô hình
+    - Test: Thử nghiệm kết hợp bộ dữ liệu và hiển thị với DataFrame.
+    - TestTokenize: Thử nghiệm vector hóa cơ bản.
 
 # 4, Thu thập dữ liệu
 - Code lấy tin tức từ trang trang web uy tín: 9 trang web độc hại + 1 link git
@@ -78,11 +97,12 @@
     + Word2Vec
     + Doc2Vec
 - Code thuật toán:
-    + Decision Tree: đã code, đang tối ưu
-    + Navie bayes: đã code, đang tối ưu
-    + GaussianNBt: đã code, đang tối ưu
-    + Random Forest: đã code, đang tối ưu
-    + Support Vector Machines(SVM): đã code, đang tối ưu
-- Tạo app demo nhiều dữ liệu cùng lúc 2 app riêng biệt xử lý tiếng việt + tiếng anh: đã code, đang tối ưu
-- Tạo app để demo: Sửa lại lựa chọn ngôn ngữ -> lựa chọn mô hình -> nhập dữ liệu -> dự đoán -> đang xây dựng
+    + Decision Tree: Xong
+    + Navie bayes: Xong
+    + GBC: Xong
+    + Random Forest: Xong
+    + Support Vector Machines(SVM): Xong
+
+- Tạo app demo nhiều dữ liệu cùng lúc 2 app riêng biệt xử lý tiếng việt + tiếng anh: Xong
+- Tạo app để demo: Nhập dữ liệu -> Phát hiện ngôn ngữ -> dự đoán -> Xong
 
